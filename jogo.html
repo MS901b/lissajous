@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"  xml:lang = "pt-br"  lang = "pt-br">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<link rel="stylesheet" type="text/css" href="css/estilo_grande.css" media="screen, projection" />
+		<link rel="stylesheet" type="text/css" href="css/popup.css" media="screen, projection" />
+		<link rel="stylesheet" type="text/css" href="css/notas.css" media="screen, projection" />
+		<link rel="stylesheet" type="text/css" href="css/bloco.css" media="screen, projection" />
+		<link rel="stylesheet" type="text/css" href="css/jogo.css" media="screen, projection" />
+		<!--[if IE 7]>
+			<link rel="stylesheet" type="text/css" href="css/estilo_ie7.css" media="screen, projection" />
+		<![endif]-->
+		<!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="css/estilo_ie6.css" media="screen, projection" />
+		<![endif]-->
+
+		<!-- Geogebra -->
+		<meta name=viewport content="width=device-width,initial-scale=1">
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+		<script type="text/javascript" src="scripts/AC_RunActiveContent.js"></script>
+		<script type="text/javascript" src="scripts/protoaculous.js"></script>
+		<script type="text/javascript" src="scripts/popup.js"></script>
+		<script type="text/javascript" src="scripts/notas.js"></script>
+		<script type="text/javascript" src="scripts/bloco.js"></script>
+		<script type="text/javascript" src="scripts/calculadora.js"></script>
+		<script type="text/javascript" src="scripts/rolagem_grande.js"></script>
+		<script type="text/javascript" src="scripts/interface_grande.js"></script>
+		<script type="text/javascript" src="scripts/referencias.js"></script>
+
+		<!-- O arquivo exemplo_correcao.js que contem as funções que corrigem, deve ser incluido antes do exemplo_conteudo.js-->
+		<!-- O arquivo inputs.js deve ser incluído por último -->
+
+		<script type="text/javascript" src="scripts/exemplo_correcao.js"></script>
+		<script type="text/javascript" src="scripts/exemplo_conteudo2.js"></script>
+		<script type="text/javascript" src="scripts/inputs.js"></script>
+		<script type="text/javascript">
+
+			var PosicaoAtual = {Atividade:2, Parte: 0};
+			var ProximaParte = 'atividade2_parte3.html';
+
+
+
+			var Aviso = $H({
+				pular: {
+					conteudo: 'Atenção, se você pular perderá 3 pontos.',
+					layout: ['seta_baixissimo', 'esquerda'],
+					largura: 7
+				},
+				dica: {
+					conteudo: 'Atenção, se usar a dica você perderá 2 pontos.',
+					layout: ['seta_baixissimo', 'esquerda'],
+					largura: 7
+				}
+			});
+
+
+		</script>
+		<title>Layout do software M3</title>
+	</head>
+	<body>
+
+
+	<!--
+	Nunca crie um "onload" aqui, use a Classe Event do Prototype: Event.observe(window, 'load', funcaoAqui);
+	Veja um exemplo no arquivo exemplo_correcao.js
+	-->
+
+	<object id="SalvaLocal" name="SalvaLocal" type="application/x-shockwave-flash" data="applets/SalvaLocal.swf" width="1" height="1">
+		<param name="menu" value="false" />
+		<param name="movie" value="applets/SalvaLocal.swf" />
+	</object>
+
+		<div id="container">
+			<div id="cabecalho">
+				<div id="onde_estou">
+					<div class="numero_atividade">1</div>
+					<h1>Jogo dos polinômios</h1> <img src="img_layout/setinha-cabecalho.gif" alt=""/> <h2>Alguma coisa</h2>
+				</div>
+				<div id="logo"></div>
+				<div id="links">
+					<a id="mapa" href="javascript:;" onclick="new PopupCallback(this, FlashTag('applets/Mapinha.swf','Mapa', 3.6875, 1.25), ['seta_direita','central'], 14, irProMapa, [{1:'Ir para o mapa'}]);">Mapa</a>
+					<a href="introducao.html">Introdução</a>
+					<a href="index.html">Início</a>
+				</div>
+
+				<div class="limpador"></div>
+			</div>
+			<!-- Por enquanto o controle de partes trancadas não será implementado-->
+			<ul id="partes">
+				<li class="partes parte_atual">1</li>
+				<li class="partes parte_proxima"><a href="#">2</a></li>
+				<li class="partes parte_proxima"><a href="#">3</a></li>
+				<li class="partes parte_proxima"><a href="#">4</a></li>
+				<li class="partes parte_proxima"><a href="#">T</a></li>
+				<li class="partes parte_proxima"><a href="#">5</a></li>
+			</ul>
+
+			<div id="software">
+				<div id="conteudo">
+					<div id="modo_aprender">
+						<input id="aprender" type="button" onclick="javascript: vaipara();" />
+					</div>
+					<div class="a_esquerda">
+						<div id="painel_jogo" class="altura_applet_4">
+							<div id="pontuacao">
+								<div id="label_pontuacao">Pontuação</div>
+								<div id="label_jogadas">Polinômio nº</div>
+								<div id="negativo">-</div>
+								<div id="numeros" class="n0"></div>
+								<div id="numeros2" class="n3"></div>
+								<div id="jogadas" class="j0"></div>
+								<div id="jogadas2" class="j9"></div>
+								<div id="diminui"></div>
+								<div id="aumenta"></div>
+							</div>
+							<div id="nivel1"></div>
+							<div id="fundo_polinomio">
+								<label class="label">Expressão</label>
+								<br class="limpador" />
+								<label id="px">p(x) =</label>
+								<input id="resposta" class="input" type="text" />
+								<input class="button" type="button" onclick="javascript: corrige();" />
+							</div>
+							<div id="fundo_ajuda">
+								<p id="ajuda"></p>
+							</div>
+							<div id="parabens"></div>
+
+
+							<input id="pular" class="button pular_dica" style="position:absolute; bottom:15px; left:15px;" onmouseover="javascript:mostraVelatura('pular', 'pontuacao', ''); diminui(true); aumenta(true);" onmouseout="javascript:escondeVelatura('pular', 'pontuacao', ''); diminui(false); aumenta(false);" onclick="javascript: pula();" type="button" value="Pular" />
+							<input id="dica" class="button pular_dica" style="position:absolute; bottom:15px; left:105px;" onmouseover="javascript:mostraVelatura('dica', 'pontuacao', ''); diminui(true);" onmouseout="javascript:escondeVelatura('dica', 'pontuacao', ''); diminui(false);" onclick="javascript: ajuda();" type="button" value="Dica"/>
+
+
+							<div id="certo"></div>
+							<div id="errado"></div>
+
+							<div id="velatura"></div>
+							<div id="velatura_final"></div>
+							<div id="velatura_certo"></div>
+							<div id="velatura_errado"></div>
+						</div>
+
+						<div id="applet" class="a_esquerda ">
+							<div class="altura_applet_4 sem_fundo">
+
+								<!--
+									De acordo com a W3C as tags <applet> e <embed> estão depreciadas e não devem ser utilizadas em arquivos XHTML
+									e, no lugar, deve ser usada a tag <object>
+
+									No caso do flash, funcionando em todos os browsers:
+
+										<object id="Urna" name="Urna" type="application/x-shockwave-flash" data="applets/SemReposicao.swf" width="520" height="400">
+											<param name="menu" value="false" />
+											<param name="movie" value="applets/SemReposicao.swf" />
+										</object>
+
+									No caso do Java, não dá pra pôr aqui comentado em HTML pois usa comentário condicional,
+									mas está no arquivo java_applet.html
+
+								-->
+								<div id="ggbApplet"></div>
+								  <script>
+								    var ggbApp = new GGBApplet({"appName": "classic",
+								    "width": 519, "height": 380,
+								    "filename": "applets/teste.ggb",
+								    "showResetIcon": false,
+								    "enableRightClick": false,
+								    "showMenuBar": false,
+								    "showToolBar": false,
+								    "showToolBarHelp": false,
+								    "showAlgebraInput": false,
+								    "enableShiftDragZoom": false,
+								    "useBrowserForJS": true
+								    }, true);
+								    window.addEventListener("load", function() {
+								    ggbApp.inject('ggbApplet');
+								    });
+								  </script>
+
+							</div>
+						</div>
+						<div id="voltar_questao" class="a_esquerda">
+							<a name="apllet"></a>
+							<a href="javascript:;" id="volta_questao">Voltar para questão</a>
+						</div>
+
+						<br class="limpador" />
+
+
+					</div>
+
+					<br class="limpador" />
+
+					<div id="ir_applet">
+						<a href="#apllet" id="vai_applet">Vá para o simulador</a>
+					</div>
+
+
+					<div id="questoes">
+
+						<div class="limpador"></div>
+						<div>
+							<a id="link_continuar" style="float:right; margin-top:7px; margin-right:40px;">
+								<span class="escondido">Continuar</span>
+							</a>
+						</div>
+
+						<div class="limpador"></div>
+					</div>
+				</div>
+			</div>
+			<br class="limpador" />
+			<div id="rodape">
+				<a href="#">Créditos</a>&nbsp;<a href="#">Sobre o Matemática Multimídia</a>
+			</div>
+		</div>
+
+		<div id="ferramentas">
+			<a href="javascript:;" onclick="return false;" id="link_notas"><span class="escondido">referencias</span></a>
+			<a href="javascript:;" onclick="return false;" id="link_bloco"><span class="escondido">bloco de notas</span></a>
+			<a href="javascript:;" id="link_calculadora" onclick="javascript:calculadora();"><span class="escondido">calculadora</span></a>
+			<a href="javascript:;" id="link_acessibilidade"><span class="escondido">acessibilidade</span></a>
+		</div>
+		<div id="calc" class="escondido"></div>
+
+			<script type="text/javascript">
+
+				var jogadas = 0;
+				var pontuacao = 0;
+				$('velatura').hide();
+				$('velatura_final').hide();
+				$('velatura_certo').hide();
+				$('velatura_errado').hide();
+				$('fundo_ajuda').hide();
+				$('diminui').hide();
+				$('aumenta').hide();
+				$('jogadas2').hide();
+				$('numeros2').hide();
+				$('certo').hide();
+				$('errado').hide();
+				$('negativo').hide();
+				$('parabens').hide();
+
+
+				Event.observe(window, 'load',function(){
+					permiteContinuar(false);
+				});
+
+				function corrige()
+				{
+
+					if ($('resposta').value==1)
+					{
+						$('velatura_certo').show();
+						$('velatura_certo').setOpacity(0.8);
+						setTimeout("$('velatura_certo').hide();", 1000);
+						pontuacao = pontuacao+5;
+						$('certo').show();
+						$('errado').hide();
+					}
+					else
+					{
+						$('velatura_errado').show();
+						$('velatura_errado').setOpacity(0.8);
+						setTimeout("$('velatura_errado').hide();", 1000);
+						$('certo').hide();
+						$('errado').show();
+					}
+					jogadas = jogadas + 1;
+					atualizaPainel();
+				}
+
+				function atualizaPainel()
+				{
+					if (jogadas > 9)
+					{
+						$('jogadas2').show();
+						$('jogadas').className = 'j' + Math.floor(jogadas / 10);
+						var str = ''+jogadas;
+						$('jogadas2').className = 'j' + str.substr(1,1);
+					}
+					else
+					{
+						$('jogadas2').hide();
+						$('jogadas').className = 'j' + jogadas;
+					}
+					if (pontuacao > 9)
+					{
+						$('negativo').hide();
+						$('numeros2').show();
+						$('numeros').className = 'n' + Math.floor(pontuacao / 10);
+						var str = ''+pontuacao;
+						$('numeros2').className = 'n' + str.substr(1,1);
+					}
+					else
+					{
+						if (pontuacao < -9)
+						{
+							//alert(Math.floor(pontuacao*-1 / 10));
+							$('numeros2').show();
+							$('numeros').className = 'n' + Math.floor(pontuacao*-1 / 10);
+							var str = ''+pontuacao;
+							$('numeros2').className = 'n' + str.substr(2,1);
+						}
+						else
+						{
+							$('numeros2').hide();
+							if (pontuacao < 0)
+								$('numeros').className = 'n' + (pontuacao)*(-1);
+							else
+								$('numeros').className = 'n' + pontuacao;
+						}
+						if (pontuacao < 0)
+							$('negativo').show();
+						else
+							$('negativo').hide();
+					}
+
+					if (pontuacao >= 15)
+					{
+						$('parabens').show();
+						$('fundo_ajuda').hide();
+						$('parabens').update('Parabéns, você concluiu este nível do jogo. Clique no botão continuar para avançar para o próximo nível.');
+						mostraVelaturaFinal();
+						permiteContinuar(true);
+					}
+				}
+
+				function mostraVelatura(elemento1, elemento2, elemento3)
+				{
+					$('velatura').show();
+					$('velatura').setOpacity(0.8);
+					if (elemento1 != '')
+						$(elemento1).setStyle({zIndex: 501});
+					if (elemento2 != '')
+						$(elemento2).setStyle({zIndex: 502});
+					if (elemento3 != '')
+						$(elemento3).setStyle({zIndex: 503});
+				}
+				function mostraVelaturaFinal()
+				{
+					$('velatura_final').show();
+					$('velatura_final').setOpacity(0.8);
+					$('pontuacao').setStyle({zIndex: 501});
+
+				}
+				function escondeVelatura(elemento1, elemento2, elemento3)
+				{
+					$('velatura').hide();
+					if (elemento1 != '')
+						$(elemento1).setStyle({zIndex: 1});
+					if (elemento2 != '')
+						$(elemento2).setStyle({zIndex: 2});
+					if (elemento3 != '')
+						$(elemento3).setStyle({zIndex: 3});
+				}
+
+
+				function diminui(mostra)
+				{
+					if (mostra)
+						$('diminui').show();
+					else
+						$('diminui').hide();
+				}
+				function aumenta(mostra)
+				{
+					if (mostra)
+						$('aumenta').show();
+					else
+						$('aumenta').hide();
+				}
+
+
+				function ajuda()
+				{
+					$('fundo_ajuda').show();
+					$('ajuda').update('Este é um texto de ajuda, vamos ver o que dá pra fazer. Acho legal escrever bastante pra ver quanto cabe e também como vai se comportar as quebras de linha, mas acho que tá ficando legal.');
+					pontuacao = pontuacao - 2;
+					atualizaPainel();
+				}
+
+				function pula()
+				{
+					jogadas = jogadas + 1;
+					pontuacao = pontuacao - 2;
+					atualizaPainel();
+				}
+
+
+			</script>
+
+		</div>
+
+	</body>
+</html>

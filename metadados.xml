@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recurso>
+    <titulo>As curvas de Lissajous</titulo>
+    <descricao>Neste software, o aluno utilizará equações paramétricas para compreender como funcionam as curvas de Lissajous, que possuem um forte apelo visual. Também serão estudados os contextos em que elas podem ser aplicadas.</descricao>
+    <estado>finalizado</estado>
+	<imagem>lissajous.jpg</imagem>
+	<tipo>sofwtare educacional</tipo>
+	<objetivos>Entender um exemplo de combinação de funções; Introduzir e interpretar curvas parametrizadas; Reconhecer períodos e frequências em funções periódicas.</objetivos>
+	<observacoes>requisitos de software: Navegador moderno (Internet Explorer 7.0+ ou Firefox 3.0+), Adobe Flash, Player 9.0+ e máquina Java 1.5+.</observacoes>
+	<nivel>Ensino Médio</nivel>
+	<componente>Matemática</componente>
+	<temas>Números e funções, Geometria e Medidas</temas>
+	<autores>Samuel Rocha de Oliveria, Leonardo Barichello</autores>
+	<palavras_chaves>parametrização, curvas paramétricas, função seno, função cosseno, lissajous, frequência, período, osciloscópio</palavras_chaves>
+	<assunto>Gráﬁcos de funções; Curvas parametrizadas; Funções trigonométricas; Funções periódicas.</assunto>
+</recurso>
+
+
+
+

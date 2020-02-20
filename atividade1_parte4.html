@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"  xml:lang = "pt-br"  lang = "pt-br">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen, projection" title="normal"/>
+		<link rel="alternate stylesheet"  type="text/css" href="css/estilo2.css" title="grande" />
+
+		<!-- Geogebra -->
+		<meta name=viewport content="width=device-width,initial-scale=1">
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/popup.css" media="screen, projection" />
+		<link rel="stylesheet" type="text/css" href="css/notas.css" media="screen, projection" />
+		<link rel="stylesheet" type="text/css" href="css/bloco.css" media="screen, projection" />
+		<link rel="stylesheet" type="text/css" href="css/calculadora.css" media="screen, projection" />
+		<!--[if IE 7]>
+			<link rel="stylesheet" type="text/css" href="css/estilo_ie7.css" media="screen, projection" />
+		<![endif]-->
+		<!--[if lte IE 6]>
+			<link rel="stylesheet" type="text/css" href="css/estilo_ie6.css" media="screen, projection" />
+		<![endif]-->
+
+		<script type="text/javascript" src="scripts/AC_RunActiveContent.js"></script>
+		<script type="text/javascript" src="scripts/protoaculous.js"></script>
+		<script type="text/javascript" src="scripts/popup.js"></script>
+		<script type="text/javascript" src="scripts/notas.js"></script>
+		<script type="text/javascript" src="scripts/bloco.js"></script>
+		<script type="text/javascript" src="scripts/calculadora.js"></script>
+		<script type="text/javascript" src="scripts/rolagem.js"></script>
+
+
+		<!-- O arquivo referencias.js e curiosidades.js devem ser incluídos depois do interface -->
+		<script type="text/javascript" src="scripts/interface.js"></script>
+		<script type="text/javascript" src="scripts/referencias.js"></script>
+		<script type="text/javascript" src="scripts/curiosidades.js"></script>
+
+		<!-- O arquivo exemplo_correcao.js que contem as funções que corrigem, deve ser incluido antes do exemplo_conteudo.js-->
+		<!-- O arquivo inputs.js deve ser incluído por último -->
+
+		<script type="text/javascript" src="scripts_lissajous/procnumerico.js"></script>
+		<script type="text/javascript" src="scripts_lissajous/lissajous.js"></script>
+		<script type="text/javascript" src="scripts_lissajous/correcao_1.js"></script>
+		<script type="text/javascript" src="scripts_lissajous/conteudo_1.js"></script>
+		<script type="text/javascript" src="scripts/inputs.js"></script>
+		<script type="text/javascript">
+
+			var PosicaoAtual = {Atividade: 1, Parte: 3};
+			var ProximaParte = 'mapa.html';
+			var nomeSoft = 'lissajous';
+
+			var Popups = $H({
+				link_continuar:
+				{
+					conteudo: 'Você não pode continuar, enquanto não acertar todas as questões.',
+					layout: ['seta_baixo', 'direita'],
+					largura: 11
+				},
+				amplitude_horizontal:
+				{
+					conteudo: 'A amplitude horizontal é a diferença entre as abscissas do ponto com maior coordenada x e do ponto com menor coordenada x.',
+					layout: ['seta_baixo', 'central'],
+					largura: 11
+				},
+				amplitude_vertical:
+				{
+					conteudo: 'A amplitude vertical é a diferença entre as ordenadas do ponto com maior coordenada y e do ponto com menor coordenada y.',
+					layout: ['seta_baixo', 'central'],
+					largura: 11
+				},
+				amplitude_horizontal2:
+				{
+					conteudo: 'A amplitude horizontal é a diferença entre as abscissas do ponto com maior coordenada x e do ponto com menor coordenada x.',
+					layout: ['seta_baixo', 'central'],
+					largura: 11
+				},
+				amplitude_vertical2:
+				{
+					conteudo: 'A amplitude vertical é a diferença entre as ordenadas do ponto com maior coordenada y e do ponto com menor coordenada y.',
+					layout: ['seta_baixo', 'central'],
+					largura: 11
+				},
+				seletor_azul:{
+					conteudo: '<p style="text-align: center"><img src="imgs/seletor_azul.png" alt=""/></p>',
+					layout: ['seta_baixo', 'direita'],
+					largura: 7
+				}
+			});
+
+			var Perguntas = $H({
+				unset_inicial: {
+					conteudo: 'Você deseja alterar o valor. Isso fará com que você precise refazer as questões que tinham como base este valor. Confirmar alteração?',
+					layout: ['seta_baixo','direita'],
+					largura: 10,
+					callback: parte_4.unset_inicial,
+					respostas: [{sim: 'Sim'}, {nao: 'Não'}]
+				}
+			});
+
+		</script>
+		<title>As Curvas de Lissajous</title>
+	</head>
+	<body>
+
+	<!--
+	Nunca crie um "onload" aqui, use a Classe Event do Prototype: Event.observe(window, 'load', funcaoAqui);
+	Veja um exemplo no arquivo exemplo_correcao.js
+	-->
+
+		<div id="container">
+			<div id="cabecalho">
+				<div id="onde_estou">
+					<div class="numero_atividade">1</div>
+					<h1>As Curvas de Lissajous</h1> <img src="img_layout/setinha-cabecalho.gif" alt=""/> <h2>Equações paramétricas</h2>
+				</div>
+				<div id="logo"></div>
+				<div id="links">
+					<a href="mapa.html">Mapa</a>
+					<a href="introducao.html">Introdução</a>
+					<a href="index.html">Início</a>
+				</div>
+
+				<div class="limpador"></div>
+			</div>
+			<!-- O controle de partes é automático, crie um vetor com as partes no javascript de conteúdo-->
+			<ul id="partes">
+			</ul>
+
+			<div id="software">
+				<div id="conteudo">
+					<object id="SalvaLocal" name="SalvaLocal" type="application/x-shockwave-flash" data="applets/SalvaLocal.swf" width="1" height="1">
+						<param name="menu" value="false" />
+						<param name="movie" value="applets/SalvaLocal.swf" />
+					</object>
+
+					<div class="texto_solto">
+						<p>Para finalizar esta atividade, serão inseridos outros parâmetros na equação que deu origem à circunferência centralizada na origem, <em>a<sub>1</sub></em> e <em>a<sub>2</sub></em>:</p>
+						<p>c(t) = (a<sub>1</sub>*cos(t); a<sub>2</sub>*sen(t))</p>
+						<p>Qual será o efeito que eles causam na curva resultante?</p>
+					</div>
+
+
+					<div id="valor_inicial" class="caixa valor_inicial">
+						<div class="item sem_titulo">
+							<p>Dentro do intervalo entre -3 e 3, escolha dois valores não nulos e diferentes entre si para <em>a<sub>1</sub></em> e <em>a<sub>2</sub></em>. Insira os valores escolhidos abaixo:</p>
+							<p>a<sub style="font-style: italic;">1</sub> = <input id="input_valor_inicial_a1" style="margin:0; width: 80px;" type="text"/></p>
+							<p>a<sub style="font-style: italic;">2</sub> = <input id="input_valor_inicial_a2" style="margin:0; width: 80px;" type="text"/></p>
+							<a id="link_valor_inicial" href="javascript:;" onclick="javascript:parte_4.set_inicial();">Definir valores</a>
+							<a id="unset_inicial">Alterar valores</a>
+							<br class="limpador"></br>
+							<p></p>
+						</div>
+					</div>
+
+					<script type="text/javascript">
+						$('unset_inicial').hide();
+					</script>
+
+					<div id="questoes">
+
+						<div id="parte4_q6"></div>
+						<p>Se desejar, volte e defina novos valores para a<sub>1</sub> e a<sub>2</sub> e veja o que acontece com a forma da curva obtida.</p>
+						<div id="parte4_q7"></div>
+						<div id="parte4_q8"></div>
+
+						<p>
+							Agora que você sabe o que são equações paramétricas e conhece algumas delas,
+							pode ir para a <a href="atividade2_parte1.html">Atividade 2</a> e testar algumas
+							equações parametrizadas para ver algumas outras curvas, ou então ir para a
+							<a href="atividade3_parte1.html">Atividade 3</a> e conhecer as curvas de Lissajous.
+						</p>
+
+						<a href="javascript:" id="corrigir_tudo">Corrigir todas as questões</a>
+						<a id="link_continuar">
+							<span class="escondido">Continuar</span>
+						</a>
+						<div class="limpador"></div>
+					</div>
+					<div style="height: 115px;"></div>
+				</div>
+			</div>
+			<br class="limpador" />
+			<div id="rodape">
+				<a href="http://m3.ime.unicamp.br" target="_blank">Sobre o Matemática Multimídia</a>
+			</div>
+		</div>
+		<div id="applet">
+			<div id="borda_applet" class="altura_applet_4 borda sem_fundo">
+
+				<div id="ggbApplet"></div>
+				  <script>
+				    var ggbApp = new GGBApplet({"appName": "classic",
+				    "width": 519, "height": 380,
+				    "filename": "applets/a1_a2.ggb",
+				    "showResetIcon": false,
+				    "enableRightClick": false,
+				    "showMenuBar": false,
+				    "showToolBar": false,
+				    "showToolBarHelp": false,
+				    "showAlgebraInput": false,
+				    "enableShiftDragZoom": false,
+				    "useBrowserForJS": true
+				    }, true);
+				    window.addEventListener("load", function() {
+				    ggbApp.inject('ggbApplet');
+				    });
+				  </script>
+
+				<div class="canto sup_esq"></div>
+				<div class="canto sup_dir"></div>
+				<div class="canto inf_esq"></div>
+				<div class="canto inf_dir"></div>
+				<div id="associacao"></div>
+			</div>
+			<div id="comandos">
+			</div>
+		</div>
+
+
+		<div id="associado"></div>
+
+
+		<div id="ferramentas">
+			<a href="javascript:;" onclick="return false;" id="link_notas"><span class="escondido">referencias</span></a>
+			<a href="javascript:;" onclick="return false;" id="link_bloco"><span class="escondido">bloco de notas</span></a>
+			<!--<a href="javascript:;" id="link_calculadora" onclick="javascript:calculadora();"><span class="escondido">calculadora</span></a>
+			<a href="javascript:setActiveStyleSheet('grande');" id="link_acessibilidade"><span class="escondido">acessibilidade</span></a>-->
+		</div>
+
+		<div id="calc" class="escondido"></div>
+
+	</body>
+</html>

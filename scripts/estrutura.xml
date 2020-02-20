@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<software nome="lissajous">
+	
+	<item><id>a1</id>
+		<estadoinicial>1</estadoinicial>
+		<tipo>atividade</tipo>
+		<rotulo>1</rotulo>
+		<nome>Equações Paramétricas</nome>
+		<descricao>Nesta atividade, você aprenderá como funcionam as equações paramétricas e verá algumas curvas que podem ser obtidas por meio delas.</descricao>
+		<posicao>
+			<coluna>1</coluna>
+			<altura>1</altura>
+		</posicao>
+	</item>
+	
+	<item><id>a2</id>
+		<estadoinicial>1</estadoinicial>
+		<tipo>atividade</tipo>
+		<rotulo>2</rotulo>
+		<nome>Crie suas próprias curvas</nome>
+		<descricao>Nesta atividade, você poderá criar as curvas paramétricas que desejar.</descricao>
+		<posicao>
+			<coluna>2</coluna>
+			<altura>1</altura>
+		</posicao>
+		<ligacoes>
+			<com>a1</com>			
+		</ligacoes>
+	</item>	
+	
+	<item><id>a3</id>
+		<estadoinicial>1</estadoinicial>
+		<tipo>atividade</tipo>
+		<rotulo>3</rotulo>
+		<nome>As curvas de Lissajous</nome>
+		<descricao>Nesta atividade, você poderá analisar o efeito que cada um dos parâmetros causa na forma de uma curva de Lissajous.</descricao>
+		<posicao>
+			<coluna>2</coluna>
+			<altura>-1</altura>
+		</posicao>
+		<ligacoes>
+			<com>a1</com>
+		</ligacoes>
+	</item>
+	
+	<item><id>a4</id>
+		<estadoinicial>1</estadoinicial>
+		<tipo>atividade</tipo>
+		<rotulo>4</rotulo>
+		<nome>O vídeo e uma aplicação</nome>
+		<descricao>Conheça uma aplicação bastante comum em laboratórios de física e de engenharia das curvas de Lissajous.</descricao>
+		<posicao>
+			<coluna>3</coluna>
+			<altura>1</altura>
+		</posicao>
+		<ligacoes>
+			<com>a3</com>
+		</ligacoes>
+	</item>
+	
+</software>
