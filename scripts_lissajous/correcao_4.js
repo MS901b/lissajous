@@ -7,14 +7,14 @@ document.observe('dom:safeLoaded', function(ev)
 {
 	if($('SalvaLocal').Pega(nomeSoft, 'atividade_4') != '3')
 		$('SalvaLocal').Salva(nomeSoft, 'atividade_4', '2');
-	
+
 	BlocoNotas = new Bloco();
 	switch(PosicaoAtual.Parte)
 	{
 		case 1:
 			parte_2.iniciaSeguro();
 		break;
-		
+
 		case 2:
 			$('SalvaLocal').Salva(nomeSoft, 'atividade_4', '3');
 		break;
@@ -79,8 +79,11 @@ var parte_2 = new (Class.create({
 	},
 	vaiPra: function(ev, n)
 	{
-		ev.stop();
-		this.video.vaiProPonto(n-1);
+		var mediaElement = document.getElementById("video");
+		mediaElement.pause();
+		mediaElement.currentTime = n-1;
+		//ev.stop();
+		//this.video.vaiProPonto(n-1);
 	},
 	destaca: function(n)
 	{
@@ -108,7 +111,7 @@ var parte_2 = new (Class.create({
 	pause: function(){this.video.paraVideo();},
 	stop: function(){this.video.paraVideo(true);},
 	play: function()
-	{	
+	{
 		permiteContinuar(true);
 		this.video.rodaVideo();
 		$('reproduzir').trava();
@@ -119,7 +122,7 @@ var parte_2 = new (Class.create({
 		this.onLoad(ev);
 		var novo_tempo = ev.memo;
 		var i = this.pontos.length-1;
-		
+
 		while (i && novo_tempo < Math.ceil(this.pontos[i]*0.95)) i--;
 		this.destaca(i+1);
 	},
