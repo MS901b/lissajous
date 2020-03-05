@@ -68,15 +68,6 @@ var parte_2 = new (Class.create({
 				p.setStyle({marginTop: '5px',padding: '10px', border: '1px solid transparent'});
 		});
 	},
-	limpaDestaques: function()
-	{
-		var pts = this.pontos.length;
-		$R('p0', 'p'+pts).each(function(n)
-		{
-			if(p = $(n))
-				p.setStyle({backgroundColor: 'transparent', borderColor: 'transparent'});
-		});
-	},
 	vaiPra: function(ev, n)
 	{
 		var mediaElement = document.getElementById("video");
