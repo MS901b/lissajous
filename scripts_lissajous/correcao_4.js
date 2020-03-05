@@ -79,11 +79,11 @@ var parte_2 = new (Class.create({
 	},
 	vaiPra: function(ev, n)
 	{
-		var mediaElement = document.getElementById("video");
+		//var mediaElement = document.getElementById("video");
 		//mediaElement.pause();
-		mediaElement.currentTime = n-1;
-		//ev.stop();
-		//this.video.vaiProPonto(n-1);
+		//mediaElement.currentTime = n-1;
+		ev.stop();
+		this.video.vaiProPonto(n-1);
 	},
 	destaca: function(n)
 	{
