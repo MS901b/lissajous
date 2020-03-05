@@ -81,11 +81,8 @@ var parte_2 = new (Class.create({
 	{
 		var mediaElement = document.getElementById("video");
 		//mediaElement.pause();
-		mediaElement.seekable.start();  // Retorna o tempo em que o arquivo começa (em segundos)
-		mediaElement.seekable.end();    // Retorna o tempo em que o arquivo termina (em segundos)
-		mediaElement.currentTime = 122; // Ir para 122 segundos
-		mediaElement.played.end();      // Retorna o numero de segundos que o navegador reproduziu
-		mediaElement.currentTime = n-1;
+		mediaElement.currentTime = 105; // Ir para 122 segundos
+		//mediaElement.currentTime = n-1;
 		//ev.stop();
 		//this.video.vaiProPonto(n-1);
 	},
