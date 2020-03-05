@@ -81,7 +81,7 @@ var parte_2 = new (Class.create({
 	{
 		var mediaElement = document.getElementById("video");
 		//mediaElement.pause();
-		mediaElement.currentTime = 105; // Ir para 122 segundos
+		mediaElement.currentTime = 50; // Ir para 122 segundos
 		//mediaElement.currentTime = n-1;
 		//ev.stop();
 		//this.video.vaiProPonto(n-1);
