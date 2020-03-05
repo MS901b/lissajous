@@ -79,11 +79,15 @@ var parte_2 = new (Class.create({
 	},
 	vaiPra: function(ev, n)
 	{
-		//var mediaElement = document.getElementById("video");
+		var mediaElement = document.getElementById("video");
 		//mediaElement.pause();
-		//mediaElement.currentTime = n-1;
-		ev.stop();
-		this.video.vaiProPonto(n-1);
+		mediaElement.seekable.start();  // Retorna o tempo em que o arquivo começa (em segundos)
+		mediaElement.seekable.end();    // Retorna o tempo em que o arquivo termina (em segundos)
+		mediaElement.currentTime = 122; // Ir para 122 segundos
+		mediaElement.played.end();      // Retorna o numero de segundos que o navegador reproduziu
+		mediaElement.currentTime = n-1;
+		//ev.stop();
+		//this.video.vaiProPonto(n-1);
 	},
 	destaca: function(n)
 	{
