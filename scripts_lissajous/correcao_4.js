@@ -51,8 +51,8 @@ var parte_2 = new (Class.create({
 	},
 	iniciaSeguro: function()
 	{
-		$('reproduzir').observe('click', this.play.bind(this));
-		$('pausar').observe('click', this.pause.bind(this));
+		//$('reproduzir').observe('click', this.play.bind(this));
+		//$('pausar').observe('click', this.pause.bind(this));
 		$R('l1', 'l5').each(function(link){
 			$(link).observe('click', this.vaiPra.bindAsEventListener(this, link[1]));
 		}.bind(this));
