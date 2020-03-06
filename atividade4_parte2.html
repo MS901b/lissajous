@@ -44,15 +44,6 @@
 
 		</script>
 
-		<script type="text/javascript" id="tempo_video">
-
-		function MomentoVideo(n) {
-			var mediaElement = document.getElementById("video");
-			mediaElement.currentTime = n; // Ir para n segundos
-		}
-
-		</script>
-
 		<script type="text/javascript" id="tempo_video1"> var tempo = 1.01; MomentoVideo(tempo); </script>
 		<script type="text/javascript" id="tempo_video2"> var tempo = 22.68; MomentoVideo(tempo); </script>
 		<script type="text/javascript" id="tempo_video3"> var tempo = 49; MomentoVideo(tempo); </script>
@@ -156,6 +147,14 @@
 		</div>
 		<div id="calc" class="escondido"></div>
 
+		<script type="text/javascript">
+
+			function MomentoVideo(n) {
+				var mediaElement = document.getElementById("video");
+				mediaElement.currentTime = n; // Ir para n segundos
+			}
+
+		</script>
 
 	</body>
 </html>
