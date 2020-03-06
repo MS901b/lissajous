@@ -132,3 +132,10 @@ var parte_2 = new (Class.create({
 	pausou: function(ev){this.onLoad(ev); $('reproduzir').destrava(); $('pausar').trava();},
 	tocou: function(ev){this.onLoad(ev); $('reproduzir').trava(); $('pausar').destrava();}
 }))();
+
+var MomentoVideo = new (Class.create({
+    Alterar: function (n) {
+			var mediaElement = document.getElementById("video");
+			mediaElement.currentTime = n; // Ir para n segundos
+    }
+  }))
