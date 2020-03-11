@@ -853,7 +853,7 @@ var GgbToolbar = Class.create({
 				this.botaoSelec=numBotao;
 				
 				// Chamada para o geogebra
-				var applet = document.applets[this.idApplet];
+				var applet = document[this.idApplet];
 				applet.setMode(this.botoesCtrl[numBotao].numGgb);
 			}
 	}

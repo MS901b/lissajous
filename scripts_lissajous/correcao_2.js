@@ -96,8 +96,8 @@ function desenhaCurva()
 			// console.log(valores);
 			// console.log(zoom);
 
-			applet.evalCommand('a = Curva[' + func_x + ', ' + func_y + ', t, ' + min_t + ',' + max_t + ']');
-			applet.evalCommand('A = Ponto[a]');
+			applet.evalCommand('a = Curve[' + func_x + ', ' + func_y + ', t, ' + min_t + ',' + max_t + ']');
+			applet.evalCommand('A = Point[a]');
 			applet.setLabelVisible('A', true);
 			applet.setLabelStyle('A', 2);
 			applet.setColor('A', 0,0,200);
@@ -196,8 +196,8 @@ function set_inicial(dados_antigos)
 		// Salvar no SalvaLocal
 		setResp('func_x', func_x);
 		setResp('func_y', func_y);
-		setResp('min_t', min_t);
-		setResp('max_t', max_t);
+		setResp('min_t', String(min_t));
+		setResp('max_t', String(max_t));
 	}
 
 	var applet = document.ggbApplet;

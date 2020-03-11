@@ -126,9 +126,9 @@ var parte_4 = {
 		applet.setVisible('texto2', true);
 		applet.setVisible('c_1', true);
 		applet.setVisible('c_2', true);
-
-		applet.setvalue('b_1', processaExpressao(getResp('b1_parte_4')));
-		applet.setvalue('b_2', processaExpressao(getResp('b2_parte_4')));
+	
+		applet.setValue('b_1', processaExpressao(getResp('b1_parte_4')));
+		applet.setValue('b_2', processaExpressao(getResp('b2_parte_4')));
 		parte_4.ativa = true;
 
 		agendaRefresh();
@@ -145,8 +145,8 @@ var parte_4 = {
 
 		if(a1 && a2 && !isNaN(a1) && !isNaN(a2))
 		{
-			applet.setvalue('a_1', a1);
-			applet.setvalue('a_2', a2);
+			applet.setValue('a_1', a1);
+			applet.setValue('a_2', a2);
 			applet.setVisible('c', true);
 			applet.setVisible('texto3', true);
 		}
@@ -179,20 +179,19 @@ var parte_4 = {
 			setResp('a1_parte_4', a1);
 			setResp('a2_parte_4', a2);
 
-			setResp('b1_parte_4',0);
-			setResp('b2_parte_4',0);
+			setResp('b1_parte_4','0');
+			setResp('b2_parte_4','0');
 			if(!processaExpressao(getResp('b1_parte_4')))
 				while (getResp('b1_parte_4')==0)
 				{
 					setResp('b1_parte_4', Math.round(Math.random()*3));
 				}
 			if(!processaExpressao(getResp('b2_parte_4')))
-			while (getResp('b2_parte_4')==0)
+				while (getResp('b2_parte_4')==0)
 				{
 					setResp('b2_parte_4', Math.round(Math.random()*3));
 				}
-
-
+					
 			parte_4.ver_curva();
 		}
 		else

@@ -90,11 +90,10 @@ function processaExpressaoParenteses(valor)
 
 function processaExpressao(valor)
 {
-	
 	if ((valor!='') && (validaExpressao(valor)))
 	{
 
-		valor = valor.replace(/\,/g,".");
+		valor = String(valor).replace(/\,/g,".");
 		valor = String(valor).replace(/pi/gi,'π');
 		valor = colocaOperacoesPI(valor);
 		valor = processaRaiz(valor);
