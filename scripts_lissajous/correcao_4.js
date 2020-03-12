@@ -24,7 +24,7 @@ document.observe('dom:safeLoaded', function(ev)
 document.observe('dom:afterPermiteContinuar', function(ev)
 {
 	if(PosicaoAtual.Parte == 1)
-		permiteContinuar(false);
+		permiteContinuar(true);
 });
 
 var parte_2 = new (Class.create({
@@ -33,31 +33,46 @@ var parte_2 = new (Class.create({
 	{
 		this.ponto_destacado = '';
 		this.loaded = false;
-		document.observe('flash:videoLoaded', this.onLoad.bind(this));
-		document.observe('flash:cuePoint', this.cuePoint.bind(this));
-		document.observe('flash:videoStoped', this.parou.bind(this));
-		document.observe('flash:videoPaused', this.pausou.bind(this));
-		document.observe('flash:videoPlay', this.tocou.bind(this));
-		document.observe('flash:videoChange', this.alterou.bind(this));
+		//document.observe('flash:videoLoaded', this.onLoad.bind(this));
+		//document.observe('flash:cuePoint', this.cuePoint.bind(this));
+		//document.observe('flash:videoStoped', this.parou.bind(this));
+		//document.observe('flash:videoPaused', this.pausou.bind(this));
+		//document.observe('flash:videoPlay', this.tocou.bind(this));
+		//document.observe('flash:videoChange', this.alterou.bind(this));
+		
+		
 	},
 	onLoad: function(ev)
 	{
 		if (this.loaded)
 			return;
-		this.video = $('Video');
-		this.video.adicionaPontos(parte_2.pontos);
+		//this.video = $('Video');
+		//this.video.adicionaPontos(parte_2.pontos);
 		this.loaded = true;
-		this.destaca(0);
+		
+		//this.destaca(0);
 	},
 	iniciaSeguro: function()
 	{
-		//$('reproduzir').observe('click', this.play.bind(this));
-		//$('pausar').observe('click', this.pause.bind(this));
+		//$('reproduzir').observe('click', $('video').play());
+		//$('pausar').observe('click', $('video').pause());
 		$R('l1', 'l5').each(function(link){
 			$(link).observe('click', this.vaiPra.bindAsEventListener(this, link[1]));
 		}.bind(this));
 		this.montaCSS();
 		this.destaca(0);
+		
+		// Eventos video HTML5
+		$('video').ontimeupdate = function() {parte_2.alterou(this);};
+			
+		$('video').onplay = function(){ parte_2.tocou(this) };
+		$('video').onpause = function(){ parte_2.pausou(this) };
+		$('video').onended = function(){ parte_2.parou(this) };
+
+		
+
+		
+
 	},
 	montaCSS: function()
 	{
@@ -79,13 +94,8 @@ var parte_2 = new (Class.create({
 	},
 	vaiPra: function(ev, n)
 	{
-		//Depende do protoaculous - não utilizado
-		var mediaElement = document.getElementById("video");
-		mediaElement.currentTime = n; // Ir para 122 segundos
-		mediaElement.pause();
-		//mediaElement.currentTime = n-1;
-		//ev.stop();
-		//this.video.vaiProPonto(n-1);
+		$("video").currentTime = this.pontos[n-1];
+		$("video").pause();
 	},
 	destaca: function(n)
 	{
@@ -104,8 +114,9 @@ var parte_2 = new (Class.create({
 	},
 	cuePoint: function(ev)
 	{
-		this.onLoad(ev);
-		var ponto = Number(ev.memo);
+		//this.onLoad(ev);
+		//var ponto = Number(ev.memo);
+		var ponto = Number($('video').currentTime);
 		if (this.ponto_destacado != ponto+1)
 			this.pause();
 		this.destaca(ponto+1);
@@ -121,11 +132,11 @@ var parte_2 = new (Class.create({
 	},
 	alterou: function(ev)
 	{
-		this.onLoad(ev);
-		var novo_tempo = ev.memo;
+		var novo_tempo = $('video').currentTime;		
+		
 		var i = this.pontos.length-1;
 
-		while (i && novo_tempo < Math.ceil(this.pontos[i]*0.95)) i--;
+		while (i && novo_tempo < this.pontos[i]) i--;
 		this.destaca(i+1);
 	},
 	parou: function(ev){this.onLoad(ev); this.destaca(0); this.pausou(ev);},

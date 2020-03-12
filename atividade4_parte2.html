@@ -47,8 +47,8 @@
 		<script type="text/javascript" id="tempo_video1">
 
 
-			var mediaElement = document.getElementById("video");
-			mediaElement.currentTime = 90; // Ir para n segundos
+			//var mediaElement = document.getElementById("video");
+			//mediaElement.currentTime = 90; // Ir para n segundos
 
 
 		</script>
@@ -151,6 +151,11 @@
 				<div class="canto inf_dir"></div>
 				<div id="associacao"></div>
 			</div>
+			<div id="comandos">
+				<input type="button" class="botao botao_grande" id="reproduzir" value="Reproduzir" onclick="javascript:$('video').play();"/>
+				<input type="button" class="botao botao_grande" id="pausar" value="Pausar" onclick="javascript:$('video').pause();" />
+			</div>			
+			
 		</div>
 
 
