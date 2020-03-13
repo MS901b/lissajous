@@ -1,7 +1,0 @@
-os: linux
-dist: bionic
-linguage: bash
-
-script:
-  - ssh ra195727@ssh.studens.ic.unicamp.br
-  - echo "feito"
