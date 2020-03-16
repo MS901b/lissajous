@@ -28,7 +28,7 @@ document.observe('dom:afterPermiteContinuar', function(ev)
 });
 
 var parte_2 = new (Class.create({
-	pontos: ['1.01', '22.68','49','67.1','98.7'],
+	pontos: ['1.01', '22.68','49','67','98.7'],
 	initialize: function()
 	{
 		this.ponto_destacado = '';
@@ -39,8 +39,8 @@ var parte_2 = new (Class.create({
 		//document.observe('flash:videoPaused', this.pausou.bind(this));
 		//document.observe('flash:videoPlay', this.tocou.bind(this));
 		//document.observe('flash:videoChange', this.alterou.bind(this));
-		
-		
+
+
 	},
 	onLoad: function(ev)
 	{
@@ -49,7 +49,7 @@ var parte_2 = new (Class.create({
 		//this.video = $('Video');
 		//this.video.adicionaPontos(parte_2.pontos);
 		this.loaded = true;
-		
+
 		//this.destaca(0);
 	},
 	iniciaSeguro: function()
@@ -61,17 +61,17 @@ var parte_2 = new (Class.create({
 		}.bind(this));
 		this.montaCSS();
 		this.destaca(0);
-		
+
 		// Eventos video HTML5
 		$('video').ontimeupdate = function() {parte_2.alterou(this);};
-			
+
 		$('video').onplay = function(){ parte_2.tocou(this) };
 		$('video').onpause = function(){ parte_2.pausou(this) };
 		$('video').onended = function(){ parte_2.parou(this) };
 
-		
 
-		
+
+
 
 	},
 	montaCSS: function()
@@ -132,8 +132,8 @@ var parte_2 = new (Class.create({
 	},
 	alterou: function(ev)
 	{
-		var novo_tempo = $('video').currentTime;		
-		
+		var novo_tempo = $('video').currentTime;
+
 		var i = this.pontos.length-1;
 
 		while (i && novo_tempo < this.pontos[i]) i--;
