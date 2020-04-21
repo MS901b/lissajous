@@ -6,8 +6,10 @@
 	Devem ser precedidas de uma barra '/'.
 	A palavra-chave subitem será usada somente em questões com mais de um campo
 */
- 
-var IdPadrao = [['parte/parte','q/questao','/itemletra','/subitem'],'_'];
+
+var IdPadrao = [
+    ['parte/parte', 'q/questao', '/itemletra', '/subitem'], '_'
+];
 
 /*
 	Questoes
@@ -21,11 +23,8 @@ var IdPadrao = [['parte/parte','q/questao','/itemletra','/subitem'],'_'];
 var Partes = ['1'];
 var nomeSoft = 'lissajous';
 
-var Questoes = 
-[
-	{//Parte 1
-	}
-]
+var Questoes = [{ //Parte 1
+}]
 
 /*
 	Bloco de Notas
@@ -37,7 +36,4 @@ var Questoes =
 	MeuBloco para preencher o seu conteúdo.
 */
 
-var MeuBloco = new Array(
-	'As Curvas de Lissajous'
-);
-
+var MeuBloco = new Array();
