@@ -120,7 +120,7 @@ var Questoes = [{ //Parte 1
                     tipo: 'input',
                     corrigir: corrige_q_3_b,
                     enunciado: 'Quando <em>t</em> varia de 0 a 2&#960;, quantas vezes a curva <nobr><em>l(t)</em></nobr> tangencia a parte superior da grade?',
-                    msgErro: 'Analise visualmente a curva e veja quantas vezes ela toca a lateral esquerda da grade. Certifique-se de que você marcou a opção "Ver grade auxiliar".'
+                    msgErro: 'Analise visualmente a curva e veja quantas vezes ela toca a parte superior da grade. Certifique-se de que você marcou a opção “Ver grade auxiliar".'
                 }
             ]
         }

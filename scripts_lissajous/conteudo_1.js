@@ -75,7 +75,7 @@ var Questoes = [{ //Parte 1
                     { value: '3', label: 'uma parábola' },
                     { value: '4', label: 'uma reta' }
                 ],
-                msgErro: 'Escolha alguns valores de incremento para t e movimente o seletor azul para observar o comportamento dos pontos descritos pela equação paramétrica dada.'
+                msgErro: 'Escolha alguns valores de incremento para t e movimente o seletor azul para observar o comportamento dos pontos descritos pela equação paramétrica dada, se atente aos pontos que interceptam os eixos.'
             }]
         }
     },
